@@ -4,6 +4,7 @@ import { ArrowLeft, Clock, MapPin, IndianRupee, Heart, RefreshCw, Bookmark, Spar
 export interface DatePlan {
   title: string;
   tagline: string;
+  description: string;
   theme: string;
   timeline: { time: string; activity: string; detail: string; icon: string }[];
   foodRecs: { name: string; type: string; cost: string }[];
@@ -46,6 +47,11 @@ const DatePlanResult = ({ plan, onBack, onRegenerate, isLoading }: DatePlanResul
           <h2 className="text-xl font-serif font-semibold text-foreground">{plan.title}</h2>
           <p className="text-sm text-muted-foreground italic">{plan.tagline}</p>
         </div>
+      </motion.div>
+
+      {/* Brief Description */}
+      <motion.div variants={item} className="glass-card-strong rounded-2xl p-5">
+        <p className="text-sm text-foreground leading-relaxed">{plan.description}</p>
       </motion.div>
 
       {/* Timeline */}

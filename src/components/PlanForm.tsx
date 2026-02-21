@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Clock, IndianRupee, Heart, Sparkles, Send, MessageCircle } from "lucide-react";
+import { MapPin, Calendar, Clock, Timer, IndianRupee, Heart, Sparkles, Send, MessageCircle } from "lucide-react";
 
 const themes = [
   { id: "romantic", label: "Romantic", icon: "💕" },
@@ -11,18 +11,18 @@ const themes = [
   { id: "surprise", label: "Surprise Me", icon: "🎁" },
 ];
 
-const budgetOptions = [
-  { label: "₹500–1,000", value: "500-1000" },
-  { label: "₹1,000–2,500", value: "1000-2500" },
-  { label: "₹2,500–5,000", value: "2500-5000" },
-  { label: "₹5,000–10,000", value: "5000-10000" },
-  { label: "₹10,000+", value: "10000+" },
+const durationOptions = [
+  { label: "2 hrs", value: "2" },
+  { label: "3 hrs", value: "3" },
+  { label: "4 hrs", value: "4" },
+  { label: "5+ hrs", value: "5+" },
 ];
 
 export interface PlanFormData {
   city: string;
   date: string;
   time: string;
+  duration: string;
   budget: string;
   theme: string;
   specialRequests: string;
@@ -39,6 +39,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
     city: "",
     date: "",
     time: "",
+    duration: "",
     budget: "",
     theme: "",
     specialRequests: "",
@@ -47,7 +48,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
   const update = (key: keyof PlanFormData, value: string) =>
     setForm((prev) => ({ ...prev, [key]: value }));
 
-  const canSubmit = form.city && form.date && form.time && form.budget && form.theme;
+  const canSubmit = form.city && form.date && form.time && form.duration && form.budget && form.theme;
 
   const handleSubmit = () => {
     if (canSubmit) onSubmit(form);
@@ -112,27 +113,44 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
         </div>
       </div>
 
-      {/* Budget */}
+      {/* Duration */}
       <div className="glass-card rounded-2xl p-4 space-y-3">
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
-          <IndianRupee className="w-4 h-4 text-primary" />
-          Budget
+          <Timer className="w-4 h-4 text-primary" />
+          Duration
         </label>
-        <div className="flex flex-wrap gap-2">
-          {budgetOptions.map((b) => (
+        <div className="flex gap-2">
+          {durationOptions.map((d) => (
             <button
-              key={b.value}
-              onClick={() => update("budget", b.value)}
-              className={`px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 ${
-                form.budget === b.value
+              key={d.value}
+              onClick={() => update("duration", d.value)}
+              className={`flex-1 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                form.duration === d.value
                   ? "gradient-romantic text-primary-foreground shadow-glow scale-105"
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               }`}
             >
-              {b.label}
+              {d.label}
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Budget — precise input */}
+      <div className="glass-card rounded-2xl p-4 space-y-2">
+        <label className="flex items-center gap-2 text-sm font-medium text-foreground">
+          <IndianRupee className="w-4 h-4 text-primary" />
+          Budget (₹)
+        </label>
+        <input
+          type="number"
+          inputMode="numeric"
+          min={0}
+          placeholder="e.g., 3000"
+          value={form.budget}
+          onChange={(e) => update("budget", e.target.value)}
+          className="w-full bg-background/50 rounded-xl px-4 py-3 text-sm border border-border focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/50"
+        />
       </div>
 
       {/* Theme */}
