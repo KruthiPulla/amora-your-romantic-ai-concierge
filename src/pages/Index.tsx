@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
-import FloatingHearts from "@/components/FloatingHearts";
+
 import PlanForm, { type PlanFormData } from "@/components/PlanForm";
 import DatePlanResult, { type DatePlan } from "@/components/DatePlanResult";
 import InspireMe, { type DateIdea } from "@/components/InspireMe";
@@ -68,7 +68,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden max-w-md mx-auto">
-      <FloatingHearts />
+      
 
       {/* Top gradient overlay */}
       <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-background via-background/80 to-transparent z-10 max-w-md mx-auto" />

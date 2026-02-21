@@ -15,6 +15,7 @@ export function generateMockPlan(data: PlanFormData): DatePlan {
   return {
     title: `A ${themeLabels[data.theme] || "Perfect"} Evening in ${data.city}`,
     tagline: "Where every moment whispers love...",
+    description: `Amora has curated a ${(themeLabels[data.theme] || "perfect").toLowerCase()} date experience in ${data.city} within your ₹${data.budget} budget. Starting at ${data.time || "6:00 PM"} and lasting ${data.duration || "4"} hours, this plan weaves together a scenic walk, an intimate dinner, and sweet surprises — designed to feel effortless, personal, and deeply romantic.`,
     theme: data.theme,
     timeline: [
       {
