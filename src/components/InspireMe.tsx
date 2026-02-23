@@ -20,12 +20,11 @@ interface InspireMeProps {
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
     opacity: 1,
-    scale: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" as const },
+    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" as const },
   }),
 };
 
@@ -34,32 +33,32 @@ const InspireMe = ({ ideas, onBack, onPlanThis, onRefresh, isLoading }: InspireM
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="px-5 pb-8 space-y-5"
+      className="px-5 pb-8 space-y-4"
     >
       {/* Header */}
       <div className="flex items-center gap-3">
-        <button onClick={onBack} className="p-2 rounded-xl bg-secondary hover:bg-secondary/80 transition-colors">
+        <button onClick={onBack} className="p-2 rounded-xl bg-secondary/60 transition-colors">
           <ArrowLeft className="w-4 h-4 text-foreground" />
         </button>
         <div className="flex-1">
-          <h2 className="text-2xl font-serif font-semibold text-foreground flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-gold" />
+          <h2 className="text-lg font-serif font-semibold text-foreground flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-accent" />
             Date Ideas
           </h2>
-          <p className="text-sm text-muted-foreground">Valentine's inspiration for you</p>
+          <p className="text-xs text-muted-foreground">Valentine's inspiration</p>
         </div>
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={onRefresh}
           disabled={isLoading}
-          className="p-2.5 rounded-xl bg-secondary hover:bg-secondary/80 transition-colors"
+          className="p-2 rounded-xl bg-secondary/60 transition-colors"
         >
-          <RefreshCw className={`w-4 h-4 text-foreground ${isLoading ? "animate-spin" : ""}`} />
+          <RefreshCw className={`w-3.5 h-3.5 text-foreground ${isLoading ? "animate-spin" : ""}`} />
         </motion.button>
       </div>
 
       {/* Idea Cards */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {ideas.map((idea, i) => (
           <motion.div
             key={idea.id}
@@ -67,12 +66,14 @@ const InspireMe = ({ ideas, onBack, onPlanThis, onRefresh, isLoading }: InspireM
             variants={cardVariants}
             initial="hidden"
             animate="show"
-            className="glass-card-strong rounded-2xl p-5 space-y-3 relative overflow-hidden"
+            className="bg-card rounded-2xl p-4 border border-border space-y-2.5"
           >
-            <div className="absolute top-3 right-3 text-3xl opacity-20">{idea.emoji}</div>
-            <h3 className="font-serif text-lg font-semibold text-foreground pr-10">{idea.title}</h3>
-            <p className="text-sm text-muted-foreground italic leading-relaxed">{idea.description}</p>
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <div className="flex items-start justify-between">
+              <h3 className="font-serif text-base font-semibold text-foreground">{idea.title}</h3>
+              <span className="text-xl opacity-30">{idea.emoji}</span>
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">{idea.description}</p>
+            <div className="flex items-center gap-4 text-[11px] text-muted-foreground">
               <span className="flex items-center gap-1">
                 <IndianRupee className="w-3 h-3" />
                 {idea.budget}
@@ -86,7 +87,7 @@ const InspireMe = ({ ideas, onBack, onPlanThis, onRefresh, isLoading }: InspireM
               {idea.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 bg-secondary text-secondary-foreground text-[10px] font-medium rounded-full"
+                  className="px-2 py-0.5 bg-secondary/50 text-muted-foreground text-[10px] rounded-full"
                 >
                   {tag}
                 </span>
@@ -95,9 +96,9 @@ const InspireMe = ({ ideas, onBack, onPlanThis, onRefresh, isLoading }: InspireM
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => onPlanThis(idea)}
-              className="w-full gradient-romantic text-primary-foreground py-3 rounded-xl font-medium text-sm shadow-glow flex items-center justify-center gap-2 mt-2"
+              className="w-full gradient-romantic text-primary-foreground py-2.5 rounded-xl text-sm flex items-center justify-center gap-1.5 mt-1"
             >
-              💕 Plan This Date
+              Plan This Date
             </motion.button>
           </motion.div>
         ))}

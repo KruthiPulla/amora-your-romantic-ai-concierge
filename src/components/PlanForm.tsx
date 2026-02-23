@@ -59,19 +59,19 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="px-5 pb-8 space-y-5"
+      className="px-5 pb-8 space-y-4"
     >
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-serif font-semibold text-foreground">
+      <div className="text-center mb-4">
+        <h2 className="text-xl font-serif font-semibold text-foreground">
           Plan Your Date
         </h2>
-        <p className="text-muted-foreground text-sm mt-1">
+        <p className="text-muted-foreground text-xs mt-1">
           Tell us about your perfect evening
         </p>
       </div>
 
       {/* City */}
-      <div className="glass-card rounded-2xl p-4 space-y-2">
+      <div className="bg-card rounded-2xl p-4 space-y-2 border border-border">
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <MapPin className="w-4 h-4 text-primary" />
           City / Place
@@ -87,7 +87,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
 
       {/* Date & Time */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="glass-card rounded-2xl p-4 space-y-2">
+        <div className="bg-card rounded-2xl p-4 space-y-2 border border-border">
           <label className="flex items-center gap-2 text-sm font-medium text-foreground">
             <Calendar className="w-4 h-4 text-primary" />
             Date
@@ -99,7 +99,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
             className="w-full bg-background/50 rounded-xl px-3 py-3 text-sm border border-border focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
           />
         </div>
-        <div className="glass-card rounded-2xl p-4 space-y-2">
+        <div className="bg-card rounded-2xl p-4 space-y-2 border border-border">
           <label className="flex items-center gap-2 text-sm font-medium text-foreground">
             <Clock className="w-4 h-4 text-primary" />
             Start Time
@@ -114,7 +114,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
       </div>
 
       {/* Duration */}
-      <div className="glass-card rounded-2xl p-4 space-y-3">
+      <div className="bg-card rounded-2xl p-4 space-y-3 border border-border">
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Timer className="w-4 h-4 text-primary" />
           Duration
@@ -137,7 +137,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
       </div>
 
       {/* Budget — precise input */}
-      <div className="glass-card rounded-2xl p-4 space-y-2">
+      <div className="bg-card rounded-2xl p-4 space-y-2 border border-border">
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <IndianRupee className="w-4 h-4 text-primary" />
           Budget (₹)
@@ -154,7 +154,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
       </div>
 
       {/* Theme */}
-      <div className="glass-card rounded-2xl p-4 space-y-3">
+      <div className="bg-card rounded-2xl p-4 space-y-3 border border-border">
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Heart className="w-4 h-4 text-primary" />
           Date Theme
@@ -178,7 +178,7 @@ const PlanForm = ({ onSubmit, onInspireMe, isLoading }: PlanFormProps) => {
       </div>
 
       {/* Special Requests */}
-      <div className="glass-card rounded-2xl p-4 space-y-2">
+      <div className="bg-card rounded-2xl p-4 space-y-2 border border-border">
         <label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <MessageCircle className="w-4 h-4 text-primary" />
           Special Requests <span className="text-muted-foreground">(optional)</span>
