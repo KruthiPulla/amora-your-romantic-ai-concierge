@@ -145,9 +145,6 @@ const Index = () => {
               </motion.div>
             </div>
 
-            <p className="text-center text-[10px] text-muted-foreground/50 pb-4 pt-6">
-              Made with 💕 for lovers
-            </p>
           </motion.div>
         )}
 
