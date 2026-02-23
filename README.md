@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**URL**: # Amora – Your Romantic AI Concierge 🚀 Live Demo: https://amora-your-romantic-ai-concierge.vercel.app
 
 ## How can I edit this code?
 
